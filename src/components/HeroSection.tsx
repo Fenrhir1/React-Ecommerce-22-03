@@ -1,4 +1,5 @@
 import { Button, Typography, Grid } from "@mui/material";
+import ResponsiveAppBar from "./navbar";
 
 const HeroSection = () => {
   return (
@@ -17,7 +18,7 @@ const HeroSection = () => {
       <Grid
         container
         style={{
-          maxWidth: 600,
+          maxWidth: "100%",
           height: "100%",
           borderRadius: "8px",
           alignItems: "center",
@@ -26,6 +27,10 @@ const HeroSection = () => {
           margin: "0 auto",
         }}
       >
+        <div style={{ width: "100vw" }}>
+          <ResponsiveAppBar />
+        </div>
+
         <Grid item xs={12}>
           <Typography variant="h2" gutterBottom>
             ONLINE IS BETTER
