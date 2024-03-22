@@ -5,6 +5,7 @@ function App() {
       <ProductList />
     </>
   );
+
 }
 
 export default App;
