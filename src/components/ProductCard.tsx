@@ -22,51 +22,45 @@ export default function ProductCard({
   stock,
 }: ProductCardProps) {
   return (
-    <Card
-      sx={{
-        display: "inline-flex",
-        flexDirection: "column",
-        width: "320px",
-        flexBasis: "320px",
-        flexGrow: 1,
-        height: "inherit",
-        boxShadow: "lg",
-      }}
-    >
+    <Card sx={{ width: 300, height: 350 }}>
       <CardOverflow>
-        <AspectRatio sx={{ minWidth: 200, height: 200 }}>
+        <AspectRatio>
           <img src={image} loading="lazy" alt="" />
         </AspectRatio>
       </CardOverflow>
-      <CardContent
-        sx={{ height: "100%", display: "flex", flexDirection: "column" }}
-      >
-        <Typography level="body-xs">{title}</Typography>
-        <Link
-          href="#product-card"
-          fontWeight="md"
-          color="neutral"
-          textColor="text.primary"
-          overlay
-          endDecorator={<ArrowOutwardIcon />}
-        >
-          {title}
-        </Link>
-
-        <Typography
-          level="title-lg"
-          sx={{ mt: 1, fontWeight: "xl" }}
-          endDecorator={
-            <Chip component="span" size="sm" variant="soft" color="success">
-              Lowest price
-            </Chip>
-          }
-        >
-          {price} THB
-        </Typography>
-        <Typography level="body-sm">
-          (Only <b>{stock}</b> left in stock!)
-        </Typography>
+      <CardContent sx={{ display: "flex", justifyContent: "space-between" }}> 
+        <div > 
+          <Link
+            href="#product-card"
+            fontWeight="md"
+            color="neutral"
+            textColor="text.primary"
+            endDecorator={<ArrowOutwardIcon />}
+          >
+            {title}
+          </Link>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Typography
+            level="title-lg"
+            sx={{
+              fontWeight: "md",
+            }}
+            endDecorator={
+              stock > 0 ? (
+                <Chip component="span" size="sm" variant="soft" color="success">
+                  Lowest price
+                </Chip>
+              ) : ( 
+                <Chip component="span" size="sm" variant="outlined" color="danger">
+                  Out of stock
+                </Chip>
+              )
+            }
+          >
+            {price} THB
+          </Typography>
+        </div>
       </CardContent>
       <CardOverflow>
         <Button variant="solid" color="danger" size="lg">
