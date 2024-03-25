@@ -1,18 +1,17 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 
-import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
+import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
-
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
+import Tooltip from "@mui/material/Tooltip";
+import Cart from "./Cart";
+const pages = ["Products"];
 const settings = ["Logout"];
 
 function ResponsiveAppBar() {
@@ -92,25 +91,17 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
 
-          <Box sx={{ flexGrow: 0, display: { xs: "flex" } }}>
-            <IconButton
-              aria-label="shopping cart"
-              color="inherit"
-              sx={{
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  marginRight: "20px",
-                  color: "white",
-                  "&:hover": {
-                    background: "#F14444",
-                  },
-                },
-              }}
-              onClick={() => {}}
-            >
-              <ShoppingCartIcon />
-            </IconButton>
+          <Box
+            sx={{
+              flexGrow: 0,
+              display: "flex",
+              gap: "8px",
+              alignItems: "center",
+            }}
+          >
+            <div className="cart-button">
+              <Cart />
+            </div>
             <Tooltip title="Open settings">
               <IconButton
                 onClick={handleOpenUserMenu}

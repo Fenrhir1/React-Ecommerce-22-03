@@ -1,10 +1,9 @@
 export interface Product {
-  id: number;
-  description: string;
+  id?: number;
   title: string;
   price: number;
   image: string;
-  qty: number;
+  stock: number;
 }
 
 export interface Users {
