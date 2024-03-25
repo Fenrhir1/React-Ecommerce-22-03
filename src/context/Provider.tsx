@@ -1,22 +1,36 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { Product } from "../declarations/general";
+import { Product, Users } from "../declarations/general";
 
 export const ContextApp = createContext<{
   products: Array<Product>;
   cartItems: Array<Product>;
   handleAddToCart: (product: Product) => void;
   handleRemoveFromCart: (idProduct: Product["id"]) => void;
-  handleLogin: () => void;
+  handleLogin: ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => void;
+  userLogged: Users;
   handleLogout: () => void;
   handleCheckout: () => void;
+  adminPostProduct?: (product: Product) => void;
+  adminDeleteProduct?: (productId: Product["id"]) => void;
+  adminEditProduct?: (productEdited: Product) => void;
 }>({
   products: [],
   cartItems: [],
+  userLogged: { id: 0, name: "", email: "", isAdmin: false },
   handleAddToCart: () => {},
   handleRemoveFromCart: () => {},
   handleLogin: () => {},
   handleLogout: () => {},
   handleCheckout: () => {},
+  adminPostProduct: () => {},
+  adminDeleteProduct: () => {},
+  adminEditProduct: () => {},
 });
 
 interface Props {
@@ -26,19 +40,49 @@ interface Props {
 export const ContextAppProvider = ({ children }: Props) => {
   const [products, setProducts] = useState<Array<Product>>([]);
   const [cartItems, setCartItems] = useState<Array<Product>>([]);
-  const [userLogged, setUserLogged] = useState<boolean>(false);
+  const [users, setUsers] = useState<Users[]>([]);
+  const [userLogged, SetUserLogged] = useState<Users>(
+    localStorage.getItem("UserLogged")
+      ? JSON.parse(localStorage.getItem("UserLogged")!)
+      : { id: 0, name: "", email: "", isAdmin: false }
+  );
 
-  const handleLogin = () => {
-    if (!userLogged) {
-      setUserLogged(true);
-    }
-  };
-
-  const handleLogout = () => {
-    if (userLogged) {
-      setUserLogged(false);
-    }
-  };
+  //ALL
+  function handleLogin({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) {
+    const logUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (!!logUser) {
+      SetUserLogged(logUser);
+      localStorage.setItem("UserLogged", JSON.stringify(logUser));
+    } else throw new Error("user not found");
+  }
+  function handleLogout() {
+    SetUserLogged({ id: 0, name: "", email: "", isAdmin: false });
+    localStorage.removeItem("UserLogged");
+  }
+  //ADMIN
+  function adminPostProduct(product: Product) {
+    addProduct(product).then((res) => setProducts([res, ...products]));
+  }
+  function adminDeleteProduct(productId: Product["id"]) {
+    deleteProduct(productId);
+    setProducts(products.filter((product) => product.id !== productId));
+  }
+  function adminEditProduct(productEdited: Product) {
+    editProduct(productEdited);
+    setProducts(
+      products.map((product) =>
+        product.id === productEdited.id ? productEdited : product
+      )
+    );
+  }
 
   const handleAddToCart = (product: Product) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
@@ -67,9 +111,60 @@ export const ContextAppProvider = ({ children }: Props) => {
     setProducts(data);
   };
 
+  const getAllUser = async () => {
+    try {
+      const response = await fetch("http://localhost:1234/users");
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
+    }
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
+  useEffect(() => {
+    getAllUser();
+  }, []);
+
+  const addProduct = async (product: Product) => {
+    const response = await fetch("http://localhost:1234/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    const data = await response.json();
+    return data;
+  };
+
+  const editProduct = async (product: Product) => {
+    const response = await fetch(
+      `http://localhost:1234/products/${product.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      }
+    );
+    const data = await response.json();
+    return data;
+  };
+
+  const deleteProduct = async (productId: Product["id"]) => {
+    const response = await fetch(
+      `http://localhost:1234/products/${productId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return data;
+  };
 
   return (
     <ContextApp.Provider
@@ -77,10 +172,14 @@ export const ContextAppProvider = ({ children }: Props) => {
         handleAddToCart,
         handleRemoveFromCart,
         products,
+        userLogged,
         cartItems,
         handleLogin,
         handleLogout,
         handleCheckout,
+        adminPostProduct,
+        adminDeleteProduct,
+        adminEditProduct,
       }}
     >
       {children}

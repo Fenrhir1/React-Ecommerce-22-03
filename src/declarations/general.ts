@@ -7,5 +7,9 @@ export interface Product {
 }
 
 export interface Users {
-  userId: string;
+  id: number;
+  name: string;
+  email: string;
+  password?: string;
+  isAdmin: boolean;
 }

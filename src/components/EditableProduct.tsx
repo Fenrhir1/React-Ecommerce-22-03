@@ -16,8 +16,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-  const { handleAddToCart } = useContext(ContextApp);
+export default function EditableProduct({ product }: ProductCardProps) {
   const { title, price, image, stock, id } = product;
 
   return (
@@ -73,16 +72,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
       <CardOverflow>
-        <Button
-          variant="solid"
-          color="primary"
-          size="lg"
-          onClick={() => {
-            handleAddToCart(product);
-          }}
-        >
-          <ShoppingCartIcon />
-          AGGIUNGI AL CARRELLO
+        <Button variant="solid" color="primary" size="lg">
+          Modifica
+        </Button>
+        <Button variant="solid" color="success" size="lg">
+          Cancella
         </Button>
       </CardOverflow>
     </Card>
