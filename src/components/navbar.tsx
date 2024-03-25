@@ -10,11 +10,16 @@ import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
+import { ContextApp } from "../context/Provider";
 import Cart from "./Cart";
-const pages = ["Products"];
-const settings = ["Logout"];
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ResponsiveAppBar() {
+  const navigate = useNavigate();
+  const { userLogged } = useContext(ContextApp);
+  const settings = ["Logout", userLogged.isAdmin && "Dashboard"];
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -142,11 +147,25 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings
+                .filter((setting) => setting) // Filter out falsy values
+                .map((setting, index) => (
+                  <MenuItem
+                    key={index}
+                    onClick={() => {
+                      handleCloseUserMenu();
+                      if (setting === "Dashboard") {
+                        navigate("/dashboard"); // Navigates to the dashboard route
+                      } else {
+                        if (setting === "Logout") {
+                          navigate("/login");
+                        }
+                      }
+                    }}
+                  >
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
             </Menu>
           </Box>
         </Toolbar>

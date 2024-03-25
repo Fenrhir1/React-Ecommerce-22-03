@@ -7,17 +7,13 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import { useContext } from "react";
-import { ContextApp } from "../context/Provider";
 import { Product } from "../declarations/general";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-  const { handleAddToCart } = useContext(ContextApp);
+export default function EditableProduct({ product }: ProductCardProps) {
   const { title, price, image, stock, id } = product;
 
   return (
@@ -73,23 +69,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
       <CardOverflow>
-        <Button
-          variant="solid"
-          size="lg"
-          sx={{
-            gap: 5,
-            color: "white",
-            backgroundColor: "black",
-            "&:hover": {
-              backgroundColor: "#F14444",
-            },
-          }}
-          onClick={() => {
-            handleAddToCart(product);
-          }}
-        >
-          <ShoppingCartIcon />
-          AGGIUNGI AL CARRELLO
+        <Button variant="solid" color="primary" size="lg">
+          Modifica
+        </Button>
+        <Button variant="solid" color="success" size="lg">
+          Cancella
         </Button>
       </CardOverflow>
     </Card>
