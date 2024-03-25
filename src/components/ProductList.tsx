@@ -20,16 +20,35 @@ export default function ProductList() {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
-      {products.map((product: Product) => (
-        <ProductCard
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          image={product.image}
-          stock={product.inventory_quantity}
-        />
-      ))}
-    </div>
+    <>
+      <h2
+        style={{
+          textAlign: "center",
+          marginTop: "90px",
+          marginBottom: "100px",
+          fontFamily: "Libre Baskerville",
+        }}
+      >
+        I NOSTRI PRODOTTI
+      </h2>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "20px",
+        }}
+      >
+        {products.map((product: Product) => (
+          <ProductCard
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            image={product.image}
+            stock={product.inventory_quantity}
+          />
+        ))}
+      </div>
+    </>
   );
 }

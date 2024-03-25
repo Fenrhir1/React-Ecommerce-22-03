@@ -1,4 +1,4 @@
-import { Button, Typography, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import ResponsiveAppBar from "./navbar";
 
 const HeroSection = () => {
@@ -8,7 +8,8 @@ const HeroSection = () => {
         backgroundImage: `url('src/assets/hero-background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "300px",
+        marginTop: "65px",
+        height: "calc(60vh + 69px)",
         display: "flex",
         alignItems: "center",
         textAlign: "center",
@@ -38,13 +39,6 @@ const HeroSection = () => {
           <Typography variant="h5" gutterBottom>
             Scopri una vasta selezione di prodotti
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            style={{ marginTop: "16px" }}
-          >
-            Inizia lo shopping ora!
-          </Button>
         </Grid>
       </Grid>
     </div>
