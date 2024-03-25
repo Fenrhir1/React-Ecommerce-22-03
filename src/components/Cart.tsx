@@ -28,8 +28,19 @@ function Cart() {
 
   return (
     <Box sx={{ display: "flex", maxWidth: "25%" }}>
-      <ListItemButton color="neutral" onClick={toggleDrawer(true)}>
-        <ShoppingCartIcon color="primary"></ShoppingCartIcon>
+      <ListItemButton
+        onClick={toggleDrawer(true)}
+        sx={{
+          "&:hover": {
+            backgroundColor: "transparent !important",
+          },
+        }}
+      >
+        <ShoppingCartIcon
+          sx={{
+            color: "white",
+          }}
+        ></ShoppingCartIcon>
       </ListItemButton>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         <Box
