@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import ProductCard from "./ProductCard";
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  inventory_quantity: number;
-}
+import { ContextApp } from "../context/Provider";
+import { Product } from "../declarations/general";
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json))
-      .catch((error: Error) => console.error(error));
-  }, []);
+  const { products } = useContext(ContextApp);
 
   return (
-
     <>
       <h2
         style={{
@@ -41,16 +27,9 @@ export default function ProductList() {
         }}
       >
         {products.map((product: Product) => (
-          <ProductCard
-            key={product.id}
-            title={product.title}
-            price={product.price}
-            image={product.image}
-            stock={product.inventory_quantity}
-          />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </>
-
   );
 }

@@ -44,11 +44,11 @@ export const ContextAppProvider = ({ children }: Props) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
     if (existingItem) {
       const updatedCartItems = cartItems.map((item) =>
-        item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        item.id === product.id ? { ...item, stock: item.stock + 1 } : item
       );
       setCartItems(updatedCartItems);
     } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
+      setCartItems([...cartItems, { ...product, stock: 1 }]);
     }
   };
 
@@ -62,7 +62,7 @@ export const ContextAppProvider = ({ children }: Props) => {
   };
 
   const getProducts = async () => {
-    const response = await fetch("https://mockend.up.railway.app/api/products");
+    const response = await fetch("http://localhost:1234/products");
     const data = await response.json();
     setProducts(data);
   };

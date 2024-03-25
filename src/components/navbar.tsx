@@ -13,6 +13,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
+import Cart from "./Cart";
+const pages = ["Products"];
 const settings = ["Logout"];
 
 function ResponsiveAppBar() {
@@ -42,13 +44,11 @@ function ResponsiveAppBar() {
     <AppBar
       position="fixed"
       sx={{
-
         backgroundColor: "#343236",
         boxShadow: "none",
         top: 0,
         width: "100%",
         zIndex: 1000,
-
       }}
     >
       <Container maxWidth="xl">
@@ -108,7 +108,7 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: "none", md: "flex", marginRight: "20px" } }}
               onClick={() => {}}
             >
-              <ShoppingCartIcon />
+              <Cart />
             </IconButton>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

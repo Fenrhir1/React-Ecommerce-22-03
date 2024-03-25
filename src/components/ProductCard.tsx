@@ -7,23 +7,21 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { useContext } from "react";
+import { ContextApp } from "../context/Provider";
+import { Product } from "../declarations/general";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface ProductCardProps {
-  title: string;
-  price: number;
-  image: string;
-  stock: number;
+  product: Product;
 }
 
-export default function ProductCard({
-  title,
-  price,
-  image,
-  stock,
-}: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
+  const { handleAddToCart } = useContext(ContextApp);
+  const { title, price, image, stock, id } = product;
+
   return (
-    <Card sx={{ width: 300, height: 350 }}>
+    <Card key={id} sx={{ width: 300, height: 350 }}>
       <CardOverflow>
         <AspectRatio>
           <img src={image} loading="lazy" alt="" />
@@ -75,12 +73,16 @@ export default function ProductCard({
         </div>
       </CardContent>
       <CardOverflow>
-
-        <Button variant="solid" color="primary" size="lg">
-        
+        <Button
+          variant="solid"
+          color="primary"
+          size="lg"
+          onClick={() => {
+            handleAddToCart(product);
+          }}
+        >
           <ShoppingCartIcon />
           AGGIUNGI AL CARRELLO
-
         </Button>
       </CardOverflow>
     </Card>
