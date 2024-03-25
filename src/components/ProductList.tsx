@@ -9,18 +9,26 @@ interface Product {
   inventory_quantity: number;
 }
 
-export default function ProductList() {
+export default function ProductList({
+  showProducts,
+}: {
+  showProducts: boolean;
+}) {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json))
-      .catch((error: Error) => console.error(error));
-  }, []);
+    if (showProducts) {
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((json) => setProducts(json))
+        .catch((error: Error) => console.error(error));
+    }
+  }, [showProducts]);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+    <div
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+    >
       {products.map((product: Product) => (
         <ProductCard
           key={product.id}

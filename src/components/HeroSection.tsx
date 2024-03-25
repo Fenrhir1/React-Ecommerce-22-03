@@ -1,14 +1,21 @@
 import { Button, Typography, Grid } from "@mui/material";
 import ResponsiveAppBar from "./navbar";
+import { useState } from "react";
+import ProductList from "./ProductList";
 
 const HeroSection = () => {
+  const [showProducts, setShowProducts] = useState(false);
+
+  const handleClick = () => {
+    setShowProducts(true);
+  };
   return (
     <div
       style={{
         backgroundImage: `url('src/assets/hero-background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "300px",
+        height: "600px",
         display: "flex",
         alignItems: "center",
         textAlign: "center",
@@ -42,11 +49,13 @@ const HeroSection = () => {
             variant="contained"
             color="primary"
             style={{ marginTop: "16px" }}
+            onClick={handleClick}
           >
             Inizia lo shopping ora!
           </Button>
         </Grid>
       </Grid>
+      {showProducts && <ProductList showProducts />}
     </div>
   );
 };
