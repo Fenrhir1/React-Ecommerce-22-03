@@ -20,6 +20,7 @@ export default function ProductList() {
   }, []);
 
   return (
+
     <>
       <h2
         style={{
@@ -50,5 +51,6 @@ export default function ProductList() {
         ))}
       </div>
     </>
+
   );
 }

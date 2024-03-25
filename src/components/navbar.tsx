@@ -42,19 +42,23 @@ function ResponsiveAppBar() {
     <AppBar
       position="fixed"
       sx={{
+
         backgroundColor: "#343236",
         boxShadow: "none",
         top: 0,
         width: "100%",
         zIndex: 1000,
+
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+
           <h1
             style={{
               fontFamily: "monospace",
+
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "white",

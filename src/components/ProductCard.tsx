@@ -7,6 +7,7 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface ProductCardProps {
   title: string;
@@ -69,13 +70,17 @@ export default function ProductCard({
               )
             }
           >
-            {price} THB
+            {price} $
           </Typography>
         </div>
       </CardContent>
       <CardOverflow>
+
         <Button variant="solid" color="primary" size="lg">
-          Add to cart
+        
+          <ShoppingCartIcon />
+          AGGIUNGI AL CARRELLO
+
         </Button>
       </CardOverflow>
     </Card>
