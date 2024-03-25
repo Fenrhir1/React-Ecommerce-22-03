@@ -7,13 +7,8 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-
-interface ProductCardProps {
-  title: string;
-  price: number;
-  image: string;
-  stock: number;
-}
+import { useContext } from "react";
+import { ContextApp } from "../context/Provider";
 
 export default function ProductCard({
   title,
@@ -21,6 +16,8 @@ export default function ProductCard({
   image,
   stock,
 }: ProductCardProps) {
+  const { handleAddToCart } = useContext(ContextApp);
+
   return (
     <Card sx={{ width: 300, height: 350 }}>
       <CardOverflow>
@@ -28,8 +25,8 @@ export default function ProductCard({
           <img src={image} loading="lazy" alt="" />
         </AspectRatio>
       </CardOverflow>
-      <CardContent sx={{ display: "flex", justifyContent: "space-between" }}> 
-        <div > 
+      <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
+        <div>
           <Link
             href="#product-card"
             fontWeight="md"
@@ -40,7 +37,13 @@ export default function ProductCard({
             {title}
           </Link>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography
             level="title-lg"
             sx={{
@@ -51,8 +54,13 @@ export default function ProductCard({
                 <Chip component="span" size="sm" variant="soft" color="success">
                   Lowest price
                 </Chip>
-              ) : ( 
-                <Chip component="span" size="sm" variant="outlined" color="danger">
+              ) : (
+                <Chip
+                  component="span"
+                  size="sm"
+                  variant="outlined"
+                  color="danger"
+                >
                   Out of stock
                 </Chip>
               )
