@@ -11,7 +11,6 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import Cart from "./Cart";
 const pages = ["Products"];
