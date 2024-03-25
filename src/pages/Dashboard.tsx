@@ -1,7 +1,6 @@
 import { Box, Grid, useTheme } from "@mui/joy";
 import { useContext } from "react";
 import { ContextApp } from "../context/Provider";
-import ProductCard from "../components/ProductCard";
 import SideBar from "../components/Sidebar";
 import EditableProduct from "../components/EditableProduct";
 

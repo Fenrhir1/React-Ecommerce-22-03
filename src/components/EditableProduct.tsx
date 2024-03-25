@@ -7,10 +7,7 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import { useContext } from "react";
-import { ContextApp } from "../context/Provider";
 import { Product } from "../declarations/general";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface ProductCardProps {
   product: Product;
