@@ -1,25 +1,19 @@
-import { Button, Typography, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import ResponsiveAppBar from "./navbar";
-import { useState } from "react";
-import ProductList from "./ProductList";
 
 const HeroSection = () => {
-  const [showProducts, setShowProducts] = useState(false);
-
-  const handleClick = () => {
-    setShowProducts(true);
-  };
   return (
     <div
       style={{
         backgroundImage: `url('src/assets/hero-background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "600px",
+        height: "500px",
         display: "flex",
         alignItems: "center",
         textAlign: "center",
         color: "white",
+        margin: "0",
       }}
     >
       <Grid
@@ -39,23 +33,14 @@ const HeroSection = () => {
         </div>
 
         <Grid item xs={12}>
-          <Typography variant="h2" gutterBottom>
+          <Typography variant="h2" gutterBottom fontFamily={"LibreBaskerville"}>
             ONLINE IS BETTER
           </Typography>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h5" gutterBottom fontFamily={"Librebaskerville"}>
             Scopri una vasta selezione di prodotti
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            style={{ marginTop: "16px" }}
-            onClick={handleClick}
-          >
-            Inizia lo shopping ora!
-          </Button>
         </Grid>
       </Grid>
-      {showProducts && <ProductList showProducts />}
     </div>
   );
 };
