@@ -7,6 +7,7 @@ import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface ProductCardProps {
   title: string;
@@ -28,8 +29,8 @@ export default function ProductCard({
           <img src={image} loading="lazy" alt="" />
         </AspectRatio>
       </CardOverflow>
-      <CardContent sx={{ display: "flex", justifyContent: "space-between" }}> 
-        <div > 
+      <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
+        <div>
           <Link
             href="#product-card"
             fontWeight="md"
@@ -40,7 +41,13 @@ export default function ProductCard({
             {title}
           </Link>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography
             level="title-lg"
             sx={{
@@ -51,20 +58,26 @@ export default function ProductCard({
                 <Chip component="span" size="sm" variant="soft" color="success">
                   Lowest price
                 </Chip>
-              ) : ( 
-                <Chip component="span" size="sm" variant="outlined" color="danger">
+              ) : (
+                <Chip
+                  component="span"
+                  size="sm"
+                  variant="outlined"
+                  color="danger"
+                >
                   Out of stock
                 </Chip>
               )
             }
           >
-            {price} THB
+            {price} $
           </Typography>
         </div>
       </CardContent>
       <CardOverflow>
-        <Button variant="solid" color="danger" size="lg">
-          Add to cart
+        <Button variant="outlined" color="danger" size="sm">
+          <ShoppingCartIcon />
+          AGGIUNGI AL CARRELLO
         </Button>
       </CardOverflow>
     </Card>
