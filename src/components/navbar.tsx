@@ -12,8 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
+import Cart from "./Cart";
 const pages = ["Products"];
 const settings = ["Logout"];
 
@@ -122,7 +121,7 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: "none", md: "flex", marginRight: "20px" } }}
               onClick={() => {}}
             >
-              <ShoppingCartIcon />
+              <Cart />
             </IconButton>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

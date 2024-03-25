@@ -11,14 +11,7 @@ export default function ProductList() {
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
     >
       {products.map((product: Product) => (
-        <ProductCard
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          image={product.image}
-          stock={product.stock}
-          id={0}
-        />
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );

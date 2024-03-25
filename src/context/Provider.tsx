@@ -44,7 +44,7 @@ export const ContextAppProvider = ({ children }: Props) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
     if (existingItem) {
       const updatedCartItems = cartItems.map((item) =>
-        item.id === product.id ? { ...item, qty: item.stock + 1 } : item
+        item.id === product.id ? { ...item, stock: item.stock + 1 } : item
       );
       setCartItems(updatedCartItems);
     } else {
@@ -62,7 +62,7 @@ export const ContextAppProvider = ({ children }: Props) => {
   };
 
   const getProducts = async () => {
-    const response = await fetch("localhost:3000/products");
+    const response = await fetch("http://localhost:1234/products");
     const data = await response.json();
     setProducts(data);
   };
