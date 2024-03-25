@@ -5,12 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const settings = ["Logout"];
@@ -42,32 +42,16 @@ function ResponsiveAppBar() {
     <AppBar
       position="fixed"
       sx={{
-
         backgroundColor: "#343236",
         boxShadow: "none",
         top: 0,
         width: "100%",
         zIndex: 1000,
-
+        alignItems: "center",
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-
-          <h1
-            style={{
-              fontFamily: "monospace",
-
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "white",
-              textDecoration: "none",
-            }}
-          >
-            JARS
-          </h1>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -76,9 +60,8 @@ function ResponsiveAppBar() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+            ></IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -98,6 +81,14 @@ function ResponsiveAppBar() {
               }}
             ></Menu>
           </Box>
+          <Typography
+            variant="h5"
+            gutterBottom
+            fontFamily={"Librebaskeville"}
+            color="white"
+          >
+            JARS
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
 
@@ -105,18 +96,47 @@ function ResponsiveAppBar() {
             <IconButton
               aria-label="shopping cart"
               color="inherit"
-              sx={{ display: { xs: "none", md: "flex", marginRight: "20px" } }}
+              sx={{
+                display: {
+                  xs: "none",
+                  md: "flex",
+                  marginRight: "20px",
+                  color: "white",
+                  "&:hover": {
+                    background: "#F14444",
+                  },
+                },
+              }}
               onClick={() => {}}
             >
               <ShoppingCartIcon />
             </IconButton>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{
+                  display: {
+                    xs: "none",
+                    md: "flex",
+                    color: "white",
+                    "&:hover": { backgroundColor: "#F14444" },
+                  },
+                }}
+              >
+                <Avatar
+                  sx={{
+                    color: "white",
+                    "&:hover": { backgroundColor: "#F14444" },
+                  }}
+                  alt="Remy Sharp"
+                  src="/static/images/avatar/2.jpg"
+                />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{
+                mt: "50px",
+              }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{

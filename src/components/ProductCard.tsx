@@ -75,12 +75,20 @@ export default function ProductCard({
         </div>
       </CardContent>
       <CardOverflow>
-
-        <Button variant="solid" color="primary" size="lg">
-        
+        <Button
+          variant="solid"
+          size="lg"
+          sx={{
+            gap: 5,
+            color: "white",
+            backgroundColor: "black",
+            "&:hover": {
+              backgroundColor: "#F14444",
+            },
+          }}
+        >
           <ShoppingCartIcon />
           AGGIUNGI AL CARRELLO
-
         </Button>
       </CardOverflow>
     </Card>

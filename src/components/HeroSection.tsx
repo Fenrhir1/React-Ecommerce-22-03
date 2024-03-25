@@ -1,6 +1,6 @@
 import { Typography, Grid } from "@mui/material";
 import ResponsiveAppBar from "./navbar";
-
+import JARS from "../assets/logo/JARS.png";
 const HeroSection = () => {
   return (
     <div
@@ -12,7 +12,6 @@ const HeroSection = () => {
         marginTop: "65px",
         height: "calc(60vh + 69px)",
 
-     
         display: "flex",
         alignItems: "center",
         textAlign: "center",
@@ -37,11 +36,20 @@ const HeroSection = () => {
         </div>
 
         <Grid item xs={12}>
-          <Typography variant="h2" gutterBottom fontFamily={"LibreBaskerville"}>
+          <img
+            src={JARS}
+            alt="Logo"
+            style={{ height: "300px", width: "300px", marginTop: "50px" }}
+          ></img>
+
+          <Typography
+            variant="h2"
+            gutterBottom
+            fontFamily={"Librebaskeville"}
+            color="#F14444"
+            fontWeight="bold"
+          >
             ONLINE IS BETTER
-          </Typography>
-          <Typography variant="h5" gutterBottom fontFamily={"Librebaskerville"}>
-            Scopri una vasta selezione di prodotti
           </Typography>
         </Grid>
       </Grid>
