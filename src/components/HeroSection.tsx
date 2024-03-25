@@ -8,7 +8,11 @@ const HeroSection = () => {
         backgroundImage: `url('src/assets/hero-background.jpg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "500px",
+
+        marginTop: "65px",
+        height: "calc(60vh + 69px)",
+
+     
         display: "flex",
         alignItems: "center",
         textAlign: "center",

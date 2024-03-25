@@ -75,9 +75,12 @@ export default function ProductCard({
         </div>
       </CardContent>
       <CardOverflow>
-        <Button variant="outlined" color="danger" size="sm">
+
+        <Button variant="solid" color="primary" size="lg">
+        
           <ShoppingCartIcon />
           AGGIUNGI AL CARRELLO
+
         </Button>
       </CardOverflow>
     </Card>
