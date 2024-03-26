@@ -14,13 +14,13 @@ Joshua Caruso
 **Caratteristiche Principali:**
 
 1.  **Pagina di Login:** Gli utenti possono accedere o registrarsi per un nuovo account. ![Login](./public/ProjectScreen/Login.png)
-3.  **Homepage:** La homepage presenta un layout accattivante con tutti i prodotti in vendita. Ogni prodotto è visualizzato con un'immagine, un titolo, il prezzo e un pulsante per aggiungerlo al carrello. Gli utenti possono sfogliare i prodotti in base alle categorie o utilizzare la barra di ricerca per trovare articoli specifici. (Screen homepage)
+3.  **Homepage:** La homepage presenta un layout accattivante con tutti i prodotti in vendita. Ogni prodotto è visualizzato con un'immagine, un titolo, il prezzo e un pulsante per aggiungerlo al carrello. Gli utenti possono sfogliare i prodotti in base alle categorie o utilizzare la barra di ricerca per trovare articoli specifici. ![HomePage](./public/ProjectScreen/MainPage_HeroSection.png) ![HomePageProducts](./public/ProjectScreen/MainPage_Products.png)
     
-4.  **Sidebar del Carrello:** Una sidebar, che si apre al click dell'icona del carrello sulla navbar, mostra il contenuto del carrello degli acquisti. Gli utenti possono visualizzare i prodotti aggiunti al carrello insieme al prezzo totale. Possono anche modificare la quantità o rimuovere prodotti direttamente dalla sidebar. (screen carrello)
+4.  **Sidebar del Carrello:** Una sidebar, che si apre al click dell'icona del carrello sulla navbar, mostra il contenuto del carrello degli acquisti. Gli utenti possono visualizzare i prodotti aggiunti al carrello insieme al prezzo totale. Possono anche modificare la quantità o rimuovere prodotti direttamente dalla sidebar. ![Cart](./public/ProjectScreen/Cart.png)
     
-5.  **Pagina di Pagamento con Checkout:** La pagina di pagamento è progettata per guidare gli utenti attraverso il processo di checkout in modo intuitivo. Gli utenti possono inserire le informazioni di spedizione e di pagamento in modo sicuro e completare l'ordine. (screen checkout e pagamento)
+5.  **Pagina di Pagamento con Checkout:** La pagina di pagamento è progettata per guidare gli utenti attraverso il processo di checkout in modo intuitivo. Gli utenti possono inserire le informazioni di spedizione e di pagamento in modo sicuro e completare l'ordine. ![Checkout](./public/ProjectScreen/Checkout.png) ![CheckoutSuccesfull](./public/ProjectScreen/Succesfull_Checkout.png)
 
-6.  **Dashboard:** Dà la possibilità all'utente con autorizzazione Admin, di modificare ed eliminare i prodotti caricati sull'e-commerce. (screen dashboard)
+6.  **Dashboard:** Dà la possibilità all'utente con autorizzazione Admin, di modificare ed eliminare i prodotti caricati sull'e-commerce. ![Dashboard](./public/ProjectScreen/Dashboard.png)
     
 
 **Tecnologie Utilizzate:**
