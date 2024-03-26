@@ -1,4 +1,3 @@
-import AspectRatio from "@mui/joy/AspectRatio";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
@@ -23,9 +22,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card key={id} sx={{ width: 300, height: 350 }}>
       <CardOverflow>
-        <AspectRatio>
-          <img src={image} loading="lazy" alt="" />
-        </AspectRatio>
+        <div style={{ overflow: "hidden", height: "200px" }}>
+          <img src={image} loading="lazy" alt="" width={"50%"} />
+        </div>
       </CardOverflow>
       <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
         <div>

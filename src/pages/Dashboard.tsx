@@ -37,12 +37,14 @@ export default function PageDashboard() {
           <SideBar />
         </Box>
         <Grid
+          padding={"30px"}
           width={"70%"}
           height={"100vh"}
           container
           spacing={2}
           justifyContent={"space-around"}
           sx={{
+            gap: "50px",
             overflowY: "scroll",
             [theme.breakpoints.down("sm")]: {
               overflowY: "unset",
