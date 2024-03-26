@@ -5,7 +5,6 @@ import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-
 import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,10 +13,13 @@ import { ContextApp } from "../context/Provider";
 import Cart from "./Cart";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function ResponsiveAppBar() {
+  const userIsLogged = localStorage.getItem("UserLogged");
+  console.log(userIsLogged);
   const navigate = useNavigate();
-  const { userLogged } = useContext(ContextApp);
+  const { userLogged, handleLogout } = useContext(ContextApp);
   const settings = ["Logout", userLogged.isAdmin && "Dashboard"];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -90,11 +92,15 @@ function ResponsiveAppBar() {
             gutterBottom
             fontFamily={"Librebaskeville"}
             color="white"
+            onClick={() => navigate("/")}
+            sx={{ cursor: "pointer" }}
           >
             JARS
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+          </Box>
 
           <Box
             sx={{
@@ -107,28 +113,32 @@ function ResponsiveAppBar() {
             <div className="cart-button">
               <Cart />
             </div>
-            <Tooltip title="Open settings">
-              <IconButton
-                onClick={handleOpenUserMenu}
-                sx={{
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    color: "white",
-                    "&:hover": { backgroundColor: "#F14444" },
-                  },
-                }}
-              >
-                <Avatar
+            {userIsLogged ? (
+              <Tooltip title="Open settings">
+                <IconButton
+                  onClick={handleOpenUserMenu}
                   sx={{
-                    color: "white",
-                    "&:hover": { backgroundColor: "#F14444" },
+                    display: {
+                      xs: "none",
+                      md: "flex",
+                      color: "white",
+                      "&:hover": { backgroundColor: "#F14444" },
+                    },
                   }}
-                  alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
-                />
-              </IconButton>
-            </Tooltip>
+                >
+                  <Avatar
+                    sx={{
+                      color: "white",
+                      "&:hover": { backgroundColor: "#F14444" },
+                    }}
+                    alt={userLogged.isAdmin ? "Admin" : "Utente loggato"}
+                    src="/static/images/avatar/2.jpg"
+                  />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Button onClick={() => navigate("/login")}>Login</Button>
+            )}
             <Menu
               sx={{
                 mt: "50px",
@@ -158,7 +168,7 @@ function ResponsiveAppBar() {
                         navigate("/dashboard"); // Navigates to the dashboard route
                       } else {
                         if (setting === "Logout") {
-                          navigate("/login");
+                          handleLogout(); // Logs out the user
                         }
                       }
                     }}

@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { ContextApp } from "../context/Provider";
 import { Product } from "../declarations/general";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
@@ -18,6 +19,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const { handleAddToCart } = useContext(ContextApp);
   const { title, price, image, stock, id } = product;
+  const navigate = useNavigate();
 
   return (
     <Card key={id} sx={{ width: 300, height: 350 }}>
@@ -29,11 +31,11 @@ export default function ProductCard({ product }: ProductCardProps) {
       <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           <Link
-            href="#product-card"
             fontWeight="md"
             color="neutral"
             textColor="text.primary"
             endDecorator={<ArrowOutwardIcon />}
+            onClick={() => navigate(`/product/${id}`)}
           >
             {title}
           </Link>
