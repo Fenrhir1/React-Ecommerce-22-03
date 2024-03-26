@@ -30,7 +30,7 @@ function Cart() {
     };
 
   return (
-    <Box sx={{ display: "flex", maxWidth: "25%" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", maxWidth: "25%" }}>
       <ListItemButton
         onClick={toggleDrawer(true)}
         sx={{
@@ -49,34 +49,33 @@ function Cart() {
         <Box role="presentation">
           <List>
             {cartItems.map((cartProduct) => (
-              <ListItem
-                key={cartProduct.id}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  overflow: "hidden",
-                }}
-              >
+              <ListItem key={cartProduct.id} sx={{ alignItems: "center" }}>
                 <div
                   style={{ display: "flex", flexDirection: "row", gap: "8px" }}
                 >
                   <img
                     style={{
                       width: "20%",
-                      flexBasis: "20%",
+
                       aspectRatio: 1,
                     }}
                     src={cartProduct.image}
                     alt={cartProduct.title}
                   />
 
-                  <ListItemText sx={{ flexGrow: 1 }}>
+                  <ListItemText sx={{ flexGrow: 1, marginLeft: "8px" }}>
                     <Typography>{cartProduct.title}</Typography>
                     <Typography>{cartProduct.price}€</Typography>
                     <Typography> Quantity:{cartProduct.stock}</Typography>
                     <Button
+                      sx={{
+                        marginTop: "8px",
+                        color: "white",
+                        backgroundColor: "black",
+                        "&:hover": {
+                          backgroundColor: "#F14444",
+                        },
+                      }}
                       onClick={() => {
                         handleRemoveFromCart(cartProduct.id);
                       }}
@@ -92,29 +91,33 @@ function Cart() {
 
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              position: "sticky",
-              bottom: "0",
-              width: "100%",
+              marginTop: "auto",
             }}
           >
-            <ListItem sx={{}}>
-              <span style={{ width: "100%" }}>
-                Total:
+            <Divider />
+            <ListItem
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "16px",
+              }}
+            >
+              <Typography>
+                Total:{" "}
                 {cartItems.reduce(
                   (acc, cartProduct) => acc + cartProduct.price,
                   0
                 )}{" "}
                 €
-              </span>
+              </Typography>
               <Button
                 sx={{
                   width: "100%",
-                  hover: "none",
-                  border: "none",
-                  backgroundColor: "primary",
+                  marginTop: "8px",
+                  color: "white",
+                  backgroundColor: "black",
+                  "&:hover": { backgroundColor: "#F14444" },
                 }}
                 onClick={() => {
                   Navigate("/checkout");
