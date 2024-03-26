@@ -9,6 +9,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { Product } from "../declarations/general";
 import { useContext } from "react";
 import { ContextApp } from "../context/Provider";
+import BasicModal from "./Modal";
 
 interface ProductCardProps {
   product: Product;
@@ -112,18 +113,7 @@ export default function EditableProduct({ product }: ProductCardProps) {
           </div>
         </CardContent>
         <CardOverflow>
-          <Button
-            sx={{
-              marginBottom: "20px",
-              color: "white",
-              backgroundColor: "black",
-              "&:hover": { backgroundColor: "#F14444" },
-            }}
-            variant="solid"
-            size="lg"
-          >
-            Modifica
-          </Button>
+          <BasicModal product={product} />
           <Button
             sx={{
               color: "white",

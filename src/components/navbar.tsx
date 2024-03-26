@@ -19,7 +19,6 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import { Button } from "@mui/material";
 
-
 function ResponsiveAppBar() {
   const userIsLogged = localStorage.getItem("UserLogged");
   const navigate = useNavigate();
@@ -102,9 +101,7 @@ function ResponsiveAppBar() {
             JARS
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-
-          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
 
           <Box
             sx={{
@@ -114,22 +111,6 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
-            <InputBase
-              sx={{ ml: 1, flex: 1, backgroundColor: "white" }}
-              placeholder="Search"
-              inputProps={{ "aria-label": "search" }}
-            />
-            <IconButton
-              type="button"
-              sx={{
-                p: "10px",
-                color: "white",
-                "&:hover": { backgroundColor: "#F14444" },
-              }}
-              aria-label="search"
-            >
-              <SearchIcon />
-            </IconButton>
             <div className="cart-button">
               <Cart />
             </div>

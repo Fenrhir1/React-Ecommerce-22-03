@@ -19,7 +19,7 @@ export const ContextApp = createContext<{
   handleCheckout: () => void;
   adminPostProduct?: (product: Product) => void;
   adminDeleteProduct: (productId: Product["id"]) => void;
-  adminEditProduct?: (productEdited: Product) => void;
+  adminEditProduct?: (productEdited: Product | undefined) => void;
 }>({
   products: [],
   cartItems: [],
@@ -77,7 +77,8 @@ export const ContextAppProvider = ({ children }: Props) => {
     deleteProduct(productId);
     setProducts(products.filter((product) => product.id !== productId));
   }
-  function adminEditProduct(productEdited: Product) {
+  function adminEditProduct(productEdited: Product | undefined) {
+    if (!productEdited) return null;
     editProduct(productEdited);
     setProducts(
       products.map((product) =>

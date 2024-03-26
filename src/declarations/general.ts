@@ -4,8 +4,8 @@ export interface Product {
   title: string;
   price: number;
   image: string;
-  stock: any;
-  category: string;
+  stock?: any;
+  category?: string;
 }
 
 export interface Users {
