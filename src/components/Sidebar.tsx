@@ -8,6 +8,7 @@ import { InputLabel } from "@mui/material";
 export default function SideBar() {
   const { handleLogout, userLogged } = useContext(ContextApp);
   const navigate = useNavigate();
+  debugger;
 
   return (
     <>

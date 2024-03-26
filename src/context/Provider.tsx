@@ -14,17 +14,15 @@ export const ContextApp = createContext<{
     password: string;
   }) => void;
   userLogged: Users;
-  setUserLogged: (user: Users) => void;
   handleLogout: () => void;
   handleCheckout: () => void;
   adminPostProduct?: (product: Product) => void;
-  adminDeleteProduct?: (productId: Product["id"]) => void;
+  adminDeleteProduct: (productId: Product["id"]) => void;
   adminEditProduct?: (productEdited: Product) => void;
 }>({
   products: [],
   cartItems: [],
   userLogged: { id: 0, name: "", email: "", isAdmin: false },
-  setUserLogged: () => {},
   handleAddToCart: () => {},
   handleRemoveFromCart: () => {},
   handleLogin: () => {},
@@ -47,9 +45,7 @@ export const ContextAppProvider = ({ children }: Props) => {
     localStorage.getItem("UserLogged")
       ? JSON.parse(localStorage.getItem("UserLogged")!)
       : { id: 0, name: "", email: "", isAdmin: false }
-  );
-
-  //ALL
+  ); //ALL
   function handleLogin({
     email,
     password,
@@ -61,6 +57,7 @@ export const ContextAppProvider = ({ children }: Props) => {
       (user) => user.email === email && user.password === password
     );
     if (!!logUser) {
+      debugger;
       setUserLogged(logUser);
       localStorage.setItem("UserLogged", JSON.stringify(logUser));
     } else throw new Error("user not found");
@@ -174,7 +171,7 @@ export const ContextAppProvider = ({ children }: Props) => {
       value={{
         handleAddToCart,
         handleRemoveFromCart,
-        setUserLogged,
+
         products,
         userLogged,
         cartItems,

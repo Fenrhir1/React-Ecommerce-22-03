@@ -15,12 +15,14 @@ import CheckoutSuccess from "./pages/CheckoutSuccess.tsx";
 import ProductDetails from "./pages/ProductDetails.tsx";
 import { useContext } from "react";
 
-function DashLock({ isAuthenticated }: { isAuthenticated: boolean }) {
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+function DashLock() {
+  const { userLogged } = useContext(ContextApp);
+  return userLogged.isAdmin ? <Outlet /> : <Navigate to="/" replace />;
 }
 
 function App() {
   const { userLogged } = useContext(ContextApp);
+  console.log(userLogged);
   return (
     <ContextAppProvider>
       <BrowserRouter>
@@ -28,7 +30,7 @@ function App() {
           <Route path="/" element={<ProductPage />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route element={<DashLock isAuthenticated={userLogged.isAdmin} />}>
+          <Route element={<DashLock />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
           <Route path="/checkout" element={<Checkout />} />
