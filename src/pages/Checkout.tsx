@@ -6,8 +6,12 @@ export default function PageCheckout() {
   const Navigate = useNavigate();
   return (
     <>
-      <Typography variant="h3" color={"primary"} align="center">
-        Checkout
+      <Typography
+        variant="h3"
+        align="center"
+        style={{ color: "#F14444", fontFamily: "Wallpoet" }}
+      >
+        CHECKOUT
       </Typography>
       <Grid
         container
@@ -33,6 +37,11 @@ export default function PageCheckout() {
               type="text"
               placeholder="address"
               required
+              sx={{
+                "& *": {
+                  borderColor: "#F14444 !important",
+                },
+              }}
             />
 
             <TextField
@@ -41,6 +50,11 @@ export default function PageCheckout() {
               type="text"
               placeholder="city"
               required
+              sx={{
+                "& *": {
+                  borderColor: "#F14444 !important",
+                },
+              }}
             />
             <TextField
               name="postCode"
@@ -48,20 +62,35 @@ export default function PageCheckout() {
               type="text"
               placeholder="postCode"
               required
+              sx={{
+                "& *": {
+                  borderColor: "#F14444 !important",
+                },
+              }}
             />
             <TextField
+              className="text-field"
               name="cardNumber"
               label="Insert Card Number"
               type="text"
               placeholder="Card Number"
+              sx={{
+                "& *": {
+                  borderColor: "#F14444 !important",
+                },
+              }}
               required
             />
           </Box>
         </Grid>
         <Button
+          style={{
+            color: "white",
+            fontFamily: "Libre Baskerville",
+            backgroundColor: "#F14444",
+          }}
           type="submit"
           variant="contained"
-          color="primary"
           onClick={() => Navigate("/checkout/success")}
         >
           Paga!
