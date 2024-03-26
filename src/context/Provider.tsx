@@ -14,6 +14,7 @@ export const ContextApp = createContext<{
     password: string;
   }) => void;
   userLogged: Users;
+  setProducts: (products: Array<Product>) => void;
   handleLogout: () => void;
   handleCheckout: () => void;
   adminPostProduct?: (product: Product) => void;
@@ -23,6 +24,7 @@ export const ContextApp = createContext<{
   products: [],
   cartItems: [],
   userLogged: { id: 0, name: "", email: "", isAdmin: false },
+  setProducts: () => {},
   handleAddToCart: () => {},
   handleRemoveFromCart: () => {},
   handleLogin: () => {},
@@ -171,7 +173,7 @@ export const ContextAppProvider = ({ children }: Props) => {
       value={{
         handleAddToCart,
         handleRemoveFromCart,
-
+        setProducts,
         products,
         userLogged,
         cartItems,

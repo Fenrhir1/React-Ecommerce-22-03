@@ -1,13 +1,47 @@
 import { Box, Button, Input, Typography } from "@mui/joy";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContextApp } from "../context/Provider";
 import CheckIcon from "@mui/icons-material/Check";
 import { InputLabel } from "@mui/material";
 
 export default function SideBar() {
-  const { handleLogout, userLogged } = useContext(ContextApp);
+  const { handleLogout, userLogged, products, setProducts } =
+    useContext(ContextApp);
+  const [newProduct, setNewProduct] = useState({
+    title: "",
+    price: "",
+    image: "",
+  });
   const navigate = useNavigate();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setNewProduct({ ...newProduct, [name]: value });
+  };
+
+  const handleAddProduct = async () => {
+    try {
+      const response = await fetch("http://localhost:1234/products", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newProduct),
+      });
+
+      if (!response.ok) {
+        throw new Error("Errore durante l'aggiunta del prodotto");
+      }
+
+      const addedProduct = await response.json();
+      console.log("Nuovo prodotto aggiunto:", addedProduct);
+      setProducts([addedProduct, ...products]);
+    } catch (error: unknown) {
+      console.error("Si è verificato un errore:", (error as Error).message);
+    }
+  };
+
   debugger;
 
   return (
@@ -21,7 +55,7 @@ export default function SideBar() {
             textAlign="center"
             sx={{ color: "#F14444", marginBottom: "16px" }}
           >
-            BENVENUTO! {userLogged.name}
+            Benvenuto{userLogged.name}!
           </Typography>
           <Button
             sx={{
@@ -58,22 +92,32 @@ export default function SideBar() {
             <InputLabel htmlFor="component-simple" sx={{ color: "#323436" }}>
               IMMAGINE
             </InputLabel>
-            <Input id="immagine" />
+            <Input
+              id="immagine"
+              name="image"
+              value={newProduct.image}
+              onChange={handleInputChange}
+            />
 
             <InputLabel htmlFor="component-helper" sx={{ color: "#323436" }}>
               TITOLO
             </InputLabel>
-            <Input id="titolo" />
-
-            <InputLabel htmlFor="component-disabled" sx={{ color: "#323436" }}>
-              DESCRIZIONE
-            </InputLabel>
-            <Input id="descrizione" />
-
+            <Input
+              id="titolo"
+              name="title"
+              value={newProduct.title}
+              onChange={handleInputChange}
+            />
             <InputLabel htmlFor="component-error" sx={{ color: "#323436" }}>
               PREZZO
             </InputLabel>
-            <Input id="prezzo" />
+            <Input
+              id="prezzo"
+              name="price"
+              value={newProduct.price}
+              onChange={handleInputChange}
+            />
+
             <Button
               sx={{
                 width: "100%",
@@ -82,6 +126,7 @@ export default function SideBar() {
                 backgroundColor: "black",
                 "&:hover": { backgroundColor: "#F14444" },
               }}
+              onClick={handleAddProduct}
             >
               <CheckIcon />
               AGGIUNGI
