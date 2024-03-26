@@ -19,6 +19,7 @@ export default function CheckoutSuccess() {
         Riceverai una mail di conferma con i dettagli del tuo ordine!.
       </p>
       <Button
+        style={{ color: "white", backgroundColor: "#F14444" }}
         onClick={() => {
           Navigate("/");
         }}
