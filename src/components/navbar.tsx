@@ -5,7 +5,6 @@ import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-
 import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,7 +13,6 @@ import { ContextApp } from "../context/Provider";
 import Cart from "./Cart";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 function ResponsiveAppBar() {
   const navigate = useNavigate();
   const { userLogged } = useContext(ContextApp);
@@ -94,7 +92,9 @@ function ResponsiveAppBar() {
             JARS
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+          </Box>
 
           <Box
             sx={{
