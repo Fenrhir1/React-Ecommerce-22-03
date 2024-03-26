@@ -92,7 +92,9 @@ export default function BasicModal({ product }: { product: Product }) {
               adminEditProduct(newProduct!);
               setOpen(false);
             }}
-          />
+          >
+            Modifica
+          </Button>
         </Sheet>
       </Modal>
     </>
