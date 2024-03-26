@@ -13,7 +13,12 @@ import { ContextApp } from "../context/Provider";
 import Cart from "./Cart";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { InputBase } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
 import { Button } from "@mui/material";
+
 
 function ResponsiveAppBar() {
   const userIsLogged = localStorage.getItem("UserLogged");
@@ -110,6 +115,22 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
+            <InputBase
+              sx={{ ml: 1, flex: 1, backgroundColor: "white" }}
+              placeholder="Search"
+              inputProps={{ "aria-label": "search" }}
+            />
+            <IconButton
+              type="button"
+              sx={{
+                p: "10px",
+                color: "white",
+                "&:hover": { backgroundColor: "#F14444" },
+              }}
+              aria-label="search"
+            >
+              <SearchIcon />
+            </IconButton>
             <div className="cart-button">
               <Cart />
             </div>
