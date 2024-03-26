@@ -6,13 +6,35 @@ export default function PageCheckout() {
   const Navigate = useNavigate();
   return (
     <>
-      <Typography
-        variant="h3"
-        align="center"
-        style={{ color: "#F14444", fontFamily: "Wallpoet" }}
+      <div
+        style={{
+          backgroundImage: `url('src/assets/hero-background.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+
+          marginTop: "65px",
+          height: "calc(48vh + 40px)",
+          justifyContent: "center",
+          display: "flex",
+          alignItems: "center",
+          textAlign: "center",
+          color: "white",
+          margin: "0",
+        }}
       >
-        CHECKOUT
-      </Typography>
+        <Typography
+          variant="h3"
+          align="center"
+          style={{
+            color: "#F14444",
+            fontFamily: "Wallpoet",
+            fontWeight: "bold",
+            marginTop: "60px",
+          }}
+        >
+          CHECKOUT
+        </Typography>
+      </div>
       <Grid
         container
         spacing={0}
@@ -37,9 +59,21 @@ export default function PageCheckout() {
               type="text"
               placeholder="address"
               required
+              variant="outlined"
               sx={{
-                "& *": {
-                  borderColor: "#F14444 !important",
+                "& .MuiInputLabel-root": {
+                  color: "#F14444",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#F14444",
+                  },
                 },
               }}
             />
@@ -50,9 +84,21 @@ export default function PageCheckout() {
               type="text"
               placeholder="city"
               required
+              variant="outlined"
               sx={{
-                "& *": {
-                  borderColor: "#F14444 !important",
+                "& .MuiInputLabel-root": {
+                  color: "#F14444",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#F14444",
+                  },
                 },
               }}
             />
@@ -62,9 +108,21 @@ export default function PageCheckout() {
               type="text"
               placeholder="postCode"
               required
+              variant="outlined"
               sx={{
-                "& *": {
-                  borderColor: "#F14444 !important",
+                "& .MuiInputLabel-root": {
+                  color: "#F14444",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#F14444",
+                  },
                 },
               }}
             />
@@ -74,26 +132,42 @@ export default function PageCheckout() {
               label="Insert Card Number"
               type="text"
               placeholder="Card Number"
+              required
+              variant="outlined"
               sx={{
-                "& *": {
-                  borderColor: "#F14444 !important",
+                "& .MuiInputLabel-root": {
+                  color: "#F14444",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#F14444",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#F14444",
+                  },
                 },
               }}
-              required
             />
           </Box>
         </Grid>
         <Button
-          style={{
+          sx={{
             color: "white",
             fontFamily: "Libre Baskerville",
-            backgroundColor: "#F14444",
+
+            backgroundColor: "black",
+            "&:hover": {
+              backgroundColor: "#F14444",
+            },
           }}
           type="submit"
           variant="contained"
           onClick={() => Navigate("/checkout/success")}
         >
-          Paga!
+          PAGA ORA
         </Button>
       </Grid>
     </>

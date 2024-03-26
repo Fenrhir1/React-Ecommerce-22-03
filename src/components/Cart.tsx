@@ -20,7 +20,11 @@ function Cart() {
 
   useEffect(() => {
     // Aggiorna il contatore ogni volta che cambia il carrello
-    setCartItemCount(cartItems.length);
+    setCartItemCount(
+      cartItems.reduce((acc, productCart) => {
+        return acc + productCart.stock;
+      }, 0)
+    );
   }, [cartItems]);
 
   const toggleDrawer =
@@ -46,18 +50,21 @@ function Cart() {
           },
         }}
       >
-        <Badge badgeContent={cartItemCount} 
+        <Badge
+          badgeContent={cartItemCount}
           sx={{
             color: "white",
-            '& span': {background:'#f14444 !important',
-            }}}
->
+            "& span": { background: "#f14444 !important" },
+          }}
+        >
           <ShoppingCartIcon
             sx={{
               color: "white",
-              '& .MuiBadge-standard .MuiBadge-anchorOriginTopRight .MuiBadge-anchorOriginTopRightRectangular .MuiBadge-overlapRectangular .css-dlwkee-MuiBadge-badge': {
-                backgroundColor:'yellow !important',
-              }}}
+              "& .MuiBadge-standard .MuiBadge-anchorOriginTopRight .MuiBadge-anchorOriginTopRightRectangular .MuiBadge-overlapRectangular .css-dlwkee-MuiBadge-badge":
+                {
+                  backgroundColor: "yellow !important",
+                },
+            }}
           />
         </Badge>
       </ListItemButton>
