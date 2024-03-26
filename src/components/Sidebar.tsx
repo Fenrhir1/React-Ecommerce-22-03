@@ -7,13 +7,14 @@ import FormForProduct from "./FormForProduct";
 export default function SideBar() {
   const { handleLogout, userLogged } = useContext(ContextApp);
   const navigate = useNavigate();
+  debugger;
 
   return (
     <>
       {!!userLogged && !!userLogged.isAdmin && (
         <Box display="flex" gap={1} flexDirection="column">
           <Typography fontSize="md" level="title-md" textAlign="center">
-            benvenuto! {userLogged.name}
+            Benvenuto {userLogged.name}!
           </Typography>
           <Button
             size="sm"

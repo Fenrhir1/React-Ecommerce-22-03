@@ -8,6 +8,8 @@ import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { Product } from "../declarations/general";
+import { useContext } from "react";
+import { ContextApp } from "../context/Provider";
 
 interface ProductCardProps {
   product: Product;
@@ -15,6 +17,7 @@ interface ProductCardProps {
 
 export default function EditableProduct({ product }: ProductCardProps) {
   const { title, price, image, stock, id } = product;
+  const { adminDeleteProduct } = useContext(ContextApp);
 
   return (
     <Card key={id} sx={{ width: 300, height: 350 }}>
@@ -72,7 +75,14 @@ export default function EditableProduct({ product }: ProductCardProps) {
         <Button variant="solid" color="primary" size="lg">
           Modifica
         </Button>
-        <Button variant="solid" color="success" size="lg">
+        <Button
+          variant="solid"
+          color="success"
+          size="lg"
+          onClick={() => {
+            adminDeleteProduct(product.id);
+          }}
+        >
           Cancella
         </Button>
       </CardOverflow>

@@ -6,7 +6,8 @@ import EditableProduct from "../components/EditableProduct";
 
 export default function PageDashboard() {
   const { products } = useContext(ContextApp);
-  const theme = useTheme(); // Corretto per ottenere direttamente l'oggetto theme
+  const theme = useTheme();
+  debugger;
 
   return (
     <>
