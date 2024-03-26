@@ -24,7 +24,14 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card key={id} sx={{ width: 300, height: 350 }}>
       <CardOverflow>
-        <div style={{ overflow: "hidden", height: "200px" }}>
+        <div
+          style={{
+            overflow: "hidden",
+            height: "200px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <img src={image} loading="lazy" alt="" width={"50%"} />
         </div>
       </CardOverflow>
