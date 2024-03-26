@@ -22,7 +22,6 @@ import { Button } from "@mui/material";
 
 function ResponsiveAppBar() {
   const userIsLogged = localStorage.getItem("UserLogged");
-  console.log(userIsLogged);
   const navigate = useNavigate();
   const { userLogged, handleLogout } = useContext(ContextApp);
   const settings = ["Logout", userLogged.isAdmin && "Dashboard"];
