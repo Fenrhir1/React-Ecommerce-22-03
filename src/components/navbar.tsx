@@ -5,7 +5,6 @@ import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-
 import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
@@ -99,7 +98,9 @@ function ResponsiveAppBar() {
             JARS
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+
+          </Box>
 
           <Box
             sx={{

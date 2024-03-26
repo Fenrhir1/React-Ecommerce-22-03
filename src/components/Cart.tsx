@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Box from "@mui/joy/Box";
 import Drawer from "@mui/joy/Drawer";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
 import List from "@mui/joy/List";
 import Divider from "@mui/joy/Divider";
 import ListItem from "@mui/joy/ListItem";
@@ -15,6 +16,12 @@ function Cart() {
   const Navigate = useNavigate();
   const { cartItems, handleRemoveFromCart } = useContext(ContextApp);
   const [open, setOpen] = React.useState(false);
+  const [cartItemCount, setCartItemCount] = React.useState(0);
+
+  useEffect(() => {
+    // Aggiorna il contatore ogni volta che cambia il carrello
+    setCartItemCount(cartItems.length);
+  }, [cartItems]);
 
   const toggleDrawer =
     (inOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -39,11 +46,20 @@ function Cart() {
           },
         }}
       >
-        <ShoppingCartIcon
+        <Badge badgeContent={cartItemCount} 
           sx={{
             color: "white",
-          }}
-        ></ShoppingCartIcon>
+            '& span': {background:'#f14444 !important',
+            }}}
+>
+          <ShoppingCartIcon
+            sx={{
+              color: "white",
+              '& .MuiBadge-standard .MuiBadge-anchorOriginTopRight .MuiBadge-anchorOriginTopRightRectangular .MuiBadge-overlapRectangular .css-dlwkee-MuiBadge-badge': {
+                backgroundColor:'yellow !important',
+              }}}
+          />
+        </Badge>
       </ListItemButton>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         <Box role="presentation">

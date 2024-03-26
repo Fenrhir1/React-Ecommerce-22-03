@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProductCard from "./ProductCard";
 import { ContextApp } from "../context/Provider";
 import { Product } from "../declarations/general";
+import ProductSearchBar from "./ProductSearchBar";
 
 export default function ProductList() {
   const { products } = useContext(ContextApp);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProducts = products.filter((product: Product) =>
+  product.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
 
   return (
     <>
@@ -18,6 +25,7 @@ export default function ProductList() {
       >
         I NOSTRI PRODOTTI
       </h2>
+      <ProductSearchBar setSearchTerm={setSearchTerm} />
       <div
         style={{
           display: "flex",
@@ -26,9 +34,12 @@ export default function ProductList() {
           gap: "20px",
         }}
       >
-        {products.map((product: Product) => (
+        {filteredProducts.map((product: Product) => (
           <ProductCard key={product.id} product={product} />
         ))}
+
+
+        
       </div>
     </>
   );
