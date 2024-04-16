@@ -1,5 +1,5 @@
-**  
-Nome dell'App:** Jars
+
+Nome dell'App: Jars
 
 **Team Work:**
 Salvatore Polizzotti
